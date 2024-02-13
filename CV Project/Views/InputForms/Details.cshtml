@@ -1,0 +1,128 @@
+﻿@model CV_Project.Models.InputForm
+
+@{
+    ViewData["Title"] = "Details";
+}
+@*
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfilePicture)
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="@Html.DisplayFor(model => model.ProfilePictureUrl)" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Experiences)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Experiences)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tech_Skills)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tech_Skills)
+        </dd>
+    </dl>
+</div>*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <style>
+        /* Basic styles for layout */
+        body {
+            background-color: #f2f2f2; /* Grey background */
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+            margin: 10px;
+            padding:0;
+            display: inherit;
+        }
+        .container {
+            background-color: #ffffff;
+            display: flex;
+            text-align:justify;
+            border-radius: 10px;
+            margin: 20px; /* Add some spacing around the container */
+            max-width: 800px; /* Set maximum width */
+            width: 100%; /* Take full width of parent */
+            overflow: hidden; /* Hide any overflow */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+        .left {
+            flex: 1; /* Take up 50% of container width */
+            background-color: #ffffff; /* White background for left section */
+            padding: 20px;
+        }
+        .right {
+            flex: 1; /* Take up 50% of container width */
+            background-color: #f2f2f2; /* Grey background for right section */
+            padding: 20px;
+        }
+        .left img {
+            width: 200px; /* Adjust the width of your photo */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- Your photo -->
+            <img src="@Html.DisplayFor(model => model.ProfilePictureUrl)" alt="Profile Picture" style="max-width: 200px; max-height: 200px;" />
+            <!-- Contact and Education -->
+            <h2>Contact</h2>
+            <p>- @Html.Raw(Model.Address)</p>
+            <p>- @Html.Raw(Model.PhoneNumber)</p>
+            <p>- @Html.Raw(Model.Email)</p><br>
+            <h2>Profile</h2>
+            <br>-<br>-<br>-<br>
+            <h2>Education</h2>
+            <br>-<br>-<br>-<br>
+        </div>
+        <div class="right">
+            <!-- Your full name -->
+            <h1>@Html.Raw(Model.Name)</h1>
+            <!-- Experience -->
+            <h2>Experience</h2>
+            <p>@Html.Raw(Model.Experiences)</p>
+            <!-- Tech Skills -->
+            <h2>Tech Skills</h2>
+            <p>@Html.Raw(Model.Tech_Skills)</p>
+        </div>
+    </div>
+</body>
+</html>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
